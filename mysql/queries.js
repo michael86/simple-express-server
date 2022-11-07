@@ -33,6 +33,17 @@ const queries = {
                 ON users.id = logins.user_id
                   WHERE token = "${token}";`;
   },
+
+  getToken: (email) => {
+    return `SELECT users.id AS userID, logins.id AS loginID, token FROM users 
+              JOIN logins 
+                ON users.id = logins.user_id
+                  WHERE email = "${email}"`;
+  },
+
+  deleteUser: (email) => {
+    return `DELETE FROM users WHERE email = "${email}"`;
+  },
 };
 
 module.exports = queries;
