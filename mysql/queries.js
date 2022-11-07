@@ -44,6 +44,18 @@ const queries = {
   deleteUser: (email) => {
     return `DELETE FROM users WHERE email = "${email}"`;
   },
+
+  getUserIdByToken: (token) => {
+    return `SELECT user_id AS userID FROM logins WHERE token = "${token}"`;
+  },
+
+  getUserById: (id) => {
+    return `SELECT id, name, email, password FROM users WHERE id = "${id}"`;
+  },
+
+  updateUser: ({ id, email, password, name }) => {
+    return `UPDATE users SET email = "${email}", password = "${password}", name ="${name}" WHERE id = "${id}"`;
+  },
 };
 
 module.exports = queries;
